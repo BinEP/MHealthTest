@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "be-stupid-be-dumb-be-funny-if-that-s-who-you-are-don-t-try-to-be-someone-that-the-society-wants-you-to-be-that-s-stupid-so-be-yourself-christina-v-grimmie.jpg",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
