@@ -30,6 +30,8 @@ class SurgeryTableViewController: UITableViewController {
         for surgery in keys {
             surgeryNames.append((surgeries[surgery]?.name)!)
         }
+        
+        tableView.rowHeight = 100
     }
 
     override func didReceiveMemoryWarning() {

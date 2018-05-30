@@ -37,15 +37,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="surgeryNameViewCell" rowHeight="81" id="o9K-6p-r1P" customClass="SurgeryTableViewCell" customModule="MHealthTest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="1112" height="81"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="surgeryNameViewCell" rowHeight="100" id="o9K-6p-r1P" customClass="SurgeryTableViewCell" customModule="MHealthTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="1112" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o9K-6p-r1P" id="uJs-6Z-0Fv">
-                                    <rect key="frame" x="0.0" y="0.0" width="1112" height="80.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1112" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNW-VP-PgH">
-                                            <rect key="frame" x="20" y="11" width="1072" height="59"/>
+                                            <rect key="frame" x="20" y="11" width="1072" height="78"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                             <nil key="textColor"/>
@@ -63,11 +63,26 @@
                             <outlet property="delegate" destination="d0v-ra-gJJ" id="2Ld-U9-iDz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qXX-1D-D44"/>
+                    <navigationItem key="navigationItem" id="qXX-1D-D44">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="M1p-ee-P0N">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UjO-AJ-GeU">
+                                <rect key="frame" x="20" y="7" width="247" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pineapple doesn't go on Pizza"/>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="rHX-O0-gPf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rke-UM-g26">
+                                <rect key="frame" x="845" y="7" width="247" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Made By Brady"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCY-Y3-JiG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="444" y="-423"/>
+            <point key="canvasLocation" x="443.52517985611513" y="-423.02158273381298"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="ANR-z1-pDN">

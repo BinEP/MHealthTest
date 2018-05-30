@@ -120,8 +120,29 @@ class DataManager {
         2 : Surgery(name: "ICU thing", data: [
             //All together
             Stage(name : "ALl ICU things", steps:
-                [Step(description: "Identify patient, surgical procedure, surgeon and anesthesiologist", people: [Duties.Anesthesia])
-                    
+                [Step(description: "Identify patient, surgical procedure, surgeon and anesthesiologist", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss significant past medical history", people: [Duties.Anesthesia]),
+                 Step(description: "Identify allergies", people: [Duties.Anesthesia]),
+                 Step(description: "Antibiotics and last dose", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss airway grade, tube size and distance", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss invasive monitoring and peripheral access", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss IVF, blood product administration, urine output and blood loss", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss intraoperative sedation and narcotic administration and current sedation strategy", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss intraoperative and current inotrope/vasopressor strategy", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss intraoperative and current glucose management", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss NMB and reversal", people: [Duties.Anesthesia]),
+                 Step(description: "Discuss most recent labs including ABG, CBC, electrolytes, TEG, coagulation panel", people: [Duties.Anesthesia]),
+                 Step(description: "Total bypass time and cross-clamp time", people: [Duties.Anesthesia]),
+                 Step(description: "TEE findings", people: [Duties.Anesthesia]),
+                 
+                 Step(description: "Surgical procedure", people: [Duties.Surgeon]),
+                 Step(description: "Drains", people: [Duties.Surgeon]),
+                 Step(description: "Pacing Wires", people: [Duties.Surgeon]),
+                 Step(description: "Anticipated Challenges", people: [Duties.Surgeon]),
+                 Step(description: "Fast track candidate", people: [Duties.Surgeon]),
+                 
+                 
+                 
                                ])
             ])
     
