@@ -12,6 +12,7 @@ class RootViewController: UIPageViewController {
 
 
     let stepViewControllerName = "StepViewController"
+    var surgeryIndex = 1
     
 //    private(set) lazy var orderedViewControllers: [UIViewController] = {
 //        return [self.newViewController(storyboardName: "Stage1", index: 0),
@@ -33,20 +34,31 @@ class RootViewController: UIPageViewController {
 
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         //Each of the stages for surgery, this can be created any way, as long there is a first controller when the view loads or is relaoded or something
-        return [self.newViewController(index: 0),
-                self.newViewController(index: 1),
-                self.newViewController(index: 2),
-                self.newViewController(index: 3),
-                self.newViewController(index: 4),
-                self.newViewController(index: 5),
-                self.newViewController(index: 6)]
+        
+        if let num = DataManager.getNumOfStages(surgery: surgeryIndex) {
+            var views : [UIViewController] = []
+            for i in 0..<num {
+                views.append(self.newViewController(index: i))
+            }
+//            return [self.newViewController(index: 0),
+//                    self.newViewController(index: 1),
+//                    self.newViewController(index: 2),
+//                    self.newViewController(index: 3),
+//                    self.newViewController(index: 4),
+//                    self.newViewController(index: 5),
+//                    self.newViewController(index: 6)]
+            return views
+        }
+        
+        return []
+        
     }()
     
     //Used above only right now
     private func newViewController(index : Int) -> StepViewController {
         let viewController = UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewController(withIdentifier: stepViewControllerName) as! StepViewController
-        viewController.setIndex(index: index)
+        viewController.setIndex(surgeryNum: surgeryIndex, index: index)
         return viewController
         
     }
@@ -80,6 +92,9 @@ class RootViewController: UIPageViewController {
 //
 //        self.pageViewController!.didMove(toParentViewController: self)
         
+        setViewControllers()
+        
+        
         dataSource = self
         //Can set the whole array I think, but code in an extension does the actual moving of views
         if let firstViewController = orderedViewControllers.first {
@@ -90,6 +105,32 @@ class RootViewController: UIPageViewController {
         }
 
         print("loading view controllers")
+    }
+    
+    func setViewControllers() {
+        if let num = DataManager.getNumOfStages(surgery: surgeryIndex) {
+            var views : [UIViewController] = []
+            for i in 0..<num {
+                views.append(self.newViewController(index: i))
+            }
+            //            return [self.newViewController(index: 0),
+            //                    self.newViewController(index: 1),
+            //                    self.newViewController(index: 2),
+            //                    self.newViewController(index: 3),
+            //                    self.newViewController(index: 4),
+            //                    self.newViewController(index: 5),
+            //                    self.newViewController(index: 6)]
+            orderedViewControllers = views
+            print("Set view controllers")
+        } else {
+            print("didn't set view controllers")
+        }
+        
+    }
+    
+    func segueFunction(surgeryIndex : Int) {
+        self.surgeryIndex = surgeryIndex
+        setViewControllers()
     }
 
     override func didReceiveMemoryWarning() {

@@ -129,7 +129,16 @@ class DataManager {
 
     
     class func getDataForStage(surgery : Int, step : Int) -> Stage {
+        
+        
+        print("Step\(step)")
+        print("Surgery\(surgery)")
+
         return (allSurgeries[surgery]?.data[step])!
+    }
+    
+    class func getNumOfStages(surgery : Int) -> Int? {
+        return allSurgeries[surgery]?.data.count
     }
     
     class func getSurgeries() -> [Int : Surgery] {

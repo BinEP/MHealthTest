@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14111" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1gE-3m-AgL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1gE-3m-AgL">
     <device id="ipad10_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,16 +28,16 @@
             </objects>
             <point key="canvasLocation" x="444" y="-1123"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Surgery Table View Controller-->
         <scene sceneID="VJQ-yp-ljt">
             <objects>
-                <tableViewController id="d0v-ra-gJJ" sceneMemberID="viewController">
+                <tableViewController id="d0v-ra-gJJ" customClass="SurgeryTableViewController" customModule="MHealthTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wr6-hs-V9b">
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="81" id="o9K-6p-r1P" customClass="SurgeryTableViewCell" customModule="MHealthTest" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="surgeryNameViewCell" rowHeight="81" id="o9K-6p-r1P" customClass="SurgeryTableViewCell" customModule="MHealthTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="1112" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o9K-6p-r1P" id="uJs-6Z-0Fv">
@@ -72,7 +72,7 @@
         <!--Root View Controller-->
         <scene sceneID="ANR-z1-pDN">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="hpW-TS-IRm" customClass="RootViewController" customModule="MHealthTest" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="RootViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="hpW-TS-IRm" customClass="RootViewController" customModule="MHealthTest" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0b7-PW-0pB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1085" y="-1123"/>

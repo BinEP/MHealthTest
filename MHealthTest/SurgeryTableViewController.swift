@@ -11,17 +11,25 @@ import UIKit
 class SurgeryTableViewController: UITableViewController {
     
     
-    
-    
+    var surgeryNames = [String]()
+    var surgeryKeys = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("View Load")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        let surgeries = DataManager.getSurgeries()
+        let keys = surgeries.keys.sorted()
+        surgeryKeys = keys
+        for surgery in keys {
+            surgeryNames.append((surgeries[surgery]?.name)!)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,16 +46,30 @@ class SurgeryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataManager.getSurgeries().count
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let surgery = surgeryKeys[indexPath.row]
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "RootViewController") as! RootViewController
+        newViewController.surgeryIndex = surgery
+        self.navigationController?.pushViewController(newViewController, animated: true)
+//        self.present(newViewController, animated: true, completion: nil)
+    }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "surgeryNameViewCell", for: indexPath) as! SurgeryTableViewCell
+        
+        let surgeryName = surgeryNames[indexPath.row]
+        cell.surgeryNameLabel.text = surgeryName
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
