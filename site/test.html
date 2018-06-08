@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/static/health.css" type="text/css">
+	<script type="text/javascript" src="/static/health.js"></script>
+</head>
+
+
+
+
+<body onload="cssThings();">
+	<div class=".container-fluid stages" data-stage="1">	
+		<h1>My First Bootstrap Page</h1>
+		<p>This is some text.</p>
+		ggg
+		<p>step 1	</p>
+
+
+		
+
+
+
+	</div>
+
+
+	<ul class="nav nav-tabs" role="tablist">
+		<li class="nav-item"><a href="#tab-stage1" class="nav-link active" data-toggle="tab" role="tab">Stage 1</a>
+		</li>
+		<li class="nav-item"><a href="#tab-stage2" class="nav-link" data-toggle="tab" role="tab">Stage 2</a>
+		</li>
+		<li class="nav-item"><a href="#tab-stage3" class="nav-link" data-toggle="tab" role="tab">Stage 3</a>
+		</li>
+		<li class="nav-item"><a href="#tab-stage4" class="nav-link disabled" data-toggle="tab" role="tab">Stage 4</a>
+		</li>
+		<li class="nav-item"><a href="#tab-stage5" class="nav-link disabled" data-toggle="tab" role="tab">Stage 5</a>
+		</li>
+		<li class="nav-item"><a href="#tab-stage6" class="nav-link disabled" data-toggle="tab" role="tab">Stage 6</a>
+		</li>
+	</ul>
+	
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" role="tabpanel" id="tab-stage1">
+
+
+			Content 1
+
+			<div data-stage="1" data-step="1" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 1 stage 1	</p> </div>
+			<div data-stage="1" data-step="2" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 2 stage 1	</p> </div>
+			<div data-stage="2" data-step="3" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 3 stage 2	</p> </div>
+			<div data-stage="3" data-step="4" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 4 stage 3	</p> </div>
+			<div data-stage="1" data-step="5" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 5 stage 1	</p> </div>
+
+
+
+		</div>
+		<div class="tab-pane fade" role="tabpanel" id="tab-stage2">
+			Content 2
+
+			<div data-stage="1" data-step="1" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 1 stage 1	</p> </div>
+			<div data-stage="1" data-step="2" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 2 stage 1	</p> </div>
+			<div data-stage="2" data-step="3" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 3 stage 2	</p> </div>
+			<div data-stage="3" data-step="4" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 4 stage 3	</p> </div>
+			<div data-stage="1" data-step="5" class="row steps" onclick="toggleDone(this)"> &nbsp;&nbsp;&nbsp;&nbsp;<p>step 5 stage 1	</p> </div>
+
+		</div>
+		<div class="tab-pane fade" role="tabpanel" id="tab-stage3">Content 3</div>
+		<div class="tab-pane fade" role="tabpanel" id="tab-stage4">Content 4</div>
+		<div class="tab-pane fade" role="tabpanel" id="tab-stage5">Content 5</div>
+		<div class="tab-pane fade" role="tabpanel" id="tab-stage6">Content 6</div>
+	</div>
+
+
+
+	
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+
+
+
+
+
+
+
+</html>

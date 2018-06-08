@@ -1,0 +1,7 @@
+alias startOutlet="cd /Users/brady/Documents/Progamming/OutletServer && . server/bin/activate && export FLASK_APP=index.py && export FLASK_DEBUG=1 && python -m flask run"
+alias goflask="python -m flask run"
+
+
+Debug mode
+
+Virtual env called server in Outlet folder

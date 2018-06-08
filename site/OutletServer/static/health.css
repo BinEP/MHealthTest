@@ -1,0 +1,9 @@
+:root {
+			--green:#ccffcc;
+			--red:#ffb3b3;
+		}
+
+.steps {
+	background-color: var(--red);
+	border-color: coral;
+}

@@ -101,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stage : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN8-ls-bpd">
-                                <rect key="frame" x="20" y="696" width="192" height="82"/>
+                                <rect key="frame" x="20" y="696" width="158.5" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="82" id="LnR-Ia-aQ3"/>
                                 </constraints>
@@ -185,9 +185,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stupid" translatesAutoresizingMaskIntoConstraints="NO" id="qB3-hk-a70">
-                                <rect key="frame" x="298" y="691" width="794" height="143"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdn-DP-iRW">
                                 <rect key="frame" x="901" y="21" width="191" height="71"/>
                                 <color key="backgroundColor" red="0.20398780483891255" green="1" blue="0.90738045501932763" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -208,18 +205,13 @@
                             <constraint firstItem="eEY-24-xkP" firstAttribute="bottom" secondItem="uN8-ls-bpd" secondAttribute="bottom" constant="56" id="IXf-HY-JfY"/>
                             <constraint firstItem="Fdn-DP-iRW" firstAttribute="trailing" secondItem="eHj-ph-1Hq" secondAttribute="trailing" id="KLI-5h-d26"/>
                             <constraint firstItem="eHj-ph-1Hq" firstAttribute="leading" secondItem="uN8-ls-bpd" secondAttribute="leading" id="NnO-Kq-uIY"/>
-                            <constraint firstItem="qB3-hk-a70" firstAttribute="top" secondItem="eHj-ph-1Hq" secondAttribute="bottom" constant="3" id="QMR-gb-CDi"/>
-                            <constraint firstItem="eHj-ph-1Hq" firstAttribute="trailing" secondItem="qB3-hk-a70" secondAttribute="trailing" id="QZ6-GC-dUo"/>
                             <constraint firstItem="D4r-Rl-674" firstAttribute="leading" secondItem="eEY-24-xkP" secondAttribute="leading" constant="190" id="TIn-v9-kOJ"/>
                             <constraint firstItem="Fdn-DP-iRW" firstAttribute="trailing" secondItem="PZ8-uB-XUi" secondAttribute="trailingMargin" id="WwS-bY-2sy"/>
                             <constraint firstItem="eHj-ph-1Hq" firstAttribute="top" secondItem="Rqg-lh-dEJ" secondAttribute="bottom" constant="8" symbolic="YES" id="c4I-Ow-h67"/>
-                            <constraint firstItem="qB3-hk-a70" firstAttribute="leading" secondItem="uN8-ls-bpd" secondAttribute="trailing" constant="86" id="cwH-Cw-hj5"/>
                             <constraint firstItem="Fdn-DP-iRW" firstAttribute="leading" secondItem="Rqg-lh-dEJ" secondAttribute="trailing" constant="87" id="dhT-P6-uRz"/>
                             <constraint firstItem="eHj-ph-1Hq" firstAttribute="top" secondItem="Fdn-DP-iRW" secondAttribute="bottom" constant="1" id="grU-AR-EeJ"/>
-                            <constraint firstItem="qB3-hk-a70" firstAttribute="bottom" secondItem="eEY-24-xkP" secondAttribute="bottom" id="io5-w9-jfn"/>
                             <constraint firstItem="Rqg-lh-dEJ" firstAttribute="top" secondItem="eEY-24-xkP" secondAttribute="top" id="jE4-f3-LpC"/>
                             <constraint firstItem="Fdn-DP-iRW" firstAttribute="top" secondItem="eEY-24-xkP" secondAttribute="top" constant="1" id="jVW-h7-wND"/>
-                            <constraint firstItem="qB3-hk-a70" firstAttribute="leading" secondItem="D4r-Rl-674" secondAttribute="trailing" constant="27" id="ors-EN-3aa"/>
                             <constraint firstItem="uN8-ls-bpd" firstAttribute="top" secondItem="eHj-ph-1Hq" secondAttribute="bottom" constant="8" symbolic="YES" id="uVP-eU-JMK"/>
                             <constraint firstItem="uN8-ls-bpd" firstAttribute="firstBaseline" secondItem="D4r-Rl-674" secondAttribute="firstBaseline" id="wA9-np-5u0"/>
                             <constraint firstItem="Rqg-lh-dEJ" firstAttribute="leading" secondItem="PZ8-uB-XUi" secondAttribute="leadingMargin" id="wCt-lp-Ndv"/>
@@ -237,7 +229,4 @@
             <point key="canvasLocation" x="1085" y="-423"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="stupid" width="1140" height="380"/>
-    </resources>
 </document>
