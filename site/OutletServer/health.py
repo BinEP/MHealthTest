@@ -6,6 +6,8 @@ app = Flask(__name__, static_url_path="/static", static_folder='static')
 
 # app = Flask(__name__)
 
+fontSize = 60
+
 @app.route('/')
 def page() :
 
@@ -46,6 +48,10 @@ def page() :
 
 	first = True
 
+
+
+	# Timestamp all the events of when it was clicked off
+
 	# <li class="nav-item"><a href="#tab-stage1" class="nav-link active" data-toggle="tab" role="tab">Stage 1</a>
 	for (ident, surgID, name, i) in stages :
 		listElem = Tag("li")
@@ -57,6 +63,7 @@ def page() :
 			elemLink.addAttr("class", "active")
 		else :
 			elemLink.addAttr("class", "disabled")
+			# None
 
 
 		elemLink.addAttr("data-toggle", "tab")
@@ -89,6 +96,8 @@ def page() :
 
 		textTag = Tag("string")
 		textTag.addAttr("text", name)
+		textTag.addStyle("font-size", str(fontSize) + "px")
+
 		stageDiv.addElem(textTag)
 
 
@@ -103,6 +112,7 @@ def page() :
 			stepDiv.addAttr("data-done", "0")
 			stepDiv.addAttr("class", "row steps")
 			stepDiv.addAttr("onclick", "toggleDone(this)")
+			stepDiv.addStyle("font-size", str(fontSize) + "px")
 			
 			# <p>step 1 stage 1	</p>
 			stepP = Tag("p")
@@ -137,6 +147,8 @@ def page() :
 
 
 	html += containerDiv.string()
+
+	html += '<br><br><button type="button" class="btn btn-primary">Download Data</button>'
 
 	html += """<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

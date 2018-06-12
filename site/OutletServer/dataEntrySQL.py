@@ -219,4 +219,29 @@ def sqlTest() :
 	return "hello to the worl"
 
 
+
+
+def insertStep() :
+	None
+
+
+def insertStage() :
+	None
+
+
+def insertRole() :
+	None
+
+
+
+def insertSurgery() :
+	None
+
+
+
+def buildDatabase() :
+	None
+
+
+
 # sqlTest()

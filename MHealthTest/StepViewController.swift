@@ -17,6 +17,12 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
     enum CellType {
         case Stage, Step
     }
+    
+//    var meRed : UInt = 0xffc4c4
+//    var meGreen : UInt = 0x83ff81
+    
+    var meRed : UInt = 0xFFF6E6
+    var meGreen : UInt = 0xFFF6E6
 //    Data for each cell and where to get data
     struct CellDataType {
         var type : CellType
@@ -27,7 +33,9 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var surgeryStepLabel: UILabel!
-    @IBOutlet weak var stageIndexLabel: UILabel!
+//    @IBOutlet weak var stageIndexLabel: UILabel!
+    
+    
     
     var cellInfo : [CellDataType] = []
     var stage : DataManager.Stage?
@@ -56,8 +64,12 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         print("View loading")
         stage = DataManager.getDataForStage(surgery : surgeryNum, step: index)
-        stageIndexLabel.text = "\(index + 1)"
+//        stageIndexLabel.text = "\(index + 1)"
         surgeryStepLabel.text = stage?.name
+        
+        
+        view.backgroundColor = UIColorFromRGB(rgbValue: meGreen)
+        
         
         
         //Build data model
@@ -136,6 +148,7 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             print("Person Name: \(dutyString)")
             cell.name = dutyString
+            cell.backgroundColor = UIColorFromRGB(rgbValue: meGreen)
             
             return cell
         } else {
@@ -146,8 +159,9 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Duty description: \(description)")
 
             cell.setName(newName: description)
-            cell.backgroundColor = (cellInfo[indexPath.row].cellDone) ? UIColorFromRGB(rgbValue: 0xccffcc) : UIColorFromRGB(rgbValue: 0xffb3b3)
+            cell.backgroundColor = (cellInfo[indexPath.row].cellDone) ? UIColorFromRGB(rgbValue: meGreen) : UIColorFromRGB(rgbValue: meRed)
             cell.accessoryType = (cellInfo[indexPath.row].cellDone) ? .checkmark : .none
+
             
             return cell
         }
@@ -167,28 +181,49 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
         )
     }
     
+    //TODO: Disappear things in blocks. Clear text while clicking off. Wait until all done with section to remove all
 //    So that each row changes color and gets marked as completed
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selecred")
        
-
+        var index = indexPath.row
+        
+        
         if (cellInfo[indexPath.row].type == .Step) {
-            if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-                
-                if cell.accessoryType == .checkmark {
-                    cell.accessoryType = .none
-                    cellInfo[indexPath.row].cellDone = false
-                    cell.backgroundColor = UIColorFromRGB(rgbValue: 0xffb3b3)
+            
+//            cellInfo.remove(at: index)
 
-
-                } else {
-                    cell.accessoryType = .checkmark
-                    cell.backgroundColor = UIColorFromRGB(rgbValue: 0xccffcc)
-
-                    cellInfo[indexPath.row].cellDone = true
-
-                }
+            
+            if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? StepViewCell {
+                cell.stepName.text = ""
             }
+            
+            
+//            tableView.reloadData()
+
+            
+//            for i in 0..<(cellInfo.count - 1) {
+//                if cellInfo[i].type == .Stage && cellInfo[i+1].type == .Stage {
+//                    cellInfo.remove(at: i)
+//                }
+//            }
+            
+//            if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+//
+//                if cell.accessoryType == .checkmark {
+//                    cell.accessoryType = .none
+//                    cellInfo[indexPath.row].cellDone = false
+//                    cell.backgroundColor = UIColorFromRGB(rgbValue: meRed)
+//
+//
+//                } else {
+//                    cell.accessoryType = .checkmark
+//                    cell.backgroundColor = UIColorFromRGB(rgbValue: meGreen)
+//
+//                    cellInfo[indexPath.row].cellDone = true
+//
+//                }
+//            }
         }
     }
     

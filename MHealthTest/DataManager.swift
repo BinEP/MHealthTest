@@ -11,7 +11,8 @@ import Foundation
 class DataManager {
     
     enum Duties : String {
-        case Surgeon = "Surgeon", CirculatingNurse = "Circulating Nurse", Anesthesia = "Anesthesia", Perfusion = "Perfusion", All = "Any", None = "None"
+        case Surgeon = "Surgeon", CirculatingNurse = "Circulating Nurse", Anesthesia = "Anesthesia", Perfusion = "Perfusion",
+        Scrub = "Scrub", All = "All", None = "None", Blank = ""
     }
     
     struct Step {
@@ -144,6 +145,26 @@ class DataManager {
                  
                  
                                ])
+            ]),
+        
+        
+        3 : Surgery(name: "Timeout", data: [
+            //All together
+            Stage(name : "Timeout", steps:
+                [Step(description: "Team Introductions", people: [Duties.Blank]),
+                 Step(description: "Fire Risk Mitigation Confirmed if FRA=3", people: [Duties.Blank]),
+                 Step(description: "Patient Name", people: [Duties.CirculatingNurse]),
+                 Step(description: "Procedure with laterality", people: [Duties.CirculatingNurse]),
+                 Step(description: "Positioning", people: [Duties.CirculatingNurse]),
+                 Step(description: "Patient Name", people: [Duties.Anesthesia]),
+                 Step(description: "Procedure: Shorthand version", people: [Duties.Anesthesia]),
+                 Step(description: "Antibiotic Details", people: [Duties.Anesthesia]),
+                 Step(description: "Procedure: Shorthand Version", people: [Duties.Scrub]),
+                 Step(description: "Confirms Site Markings", people: [Duties.Scrub]),
+                 Step(description: "Patient Name", people: [Duties.Surgeon]),
+                 Step(description: "Procedure with Laterality", people: [Duties.Surgeon])
+                 
+                 ])
             ])
     
     ]

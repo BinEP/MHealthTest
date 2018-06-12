@@ -12,6 +12,10 @@ function toggleDone(elem) {
 		elem.style.background = getComputedStyle(elem).getPropertyValue("--green");
 		elem.setAttribute("data-done", "1");
 	}
+	
+
+	// elem.classList.toggle("glyphicon glyphicon-ok");
+
 
 	// alert("Stage: " + stage + "\tStep: " + step);
 
@@ -20,6 +24,8 @@ function toggleDone(elem) {
 }
 
 function openNext(currentStepDiv) {
+
+
 	// console.log("Open next");
 
 	// console.log(currentStepDiv.parentNode);
@@ -52,6 +58,8 @@ function openNext(currentStepDiv) {
 				// console.log("THIS ONE");
 				// console.log(child);
 				console.log("Opening the next stage");
+
+				alert("Did you actually di this?");
 				child.classList.remove("disabled");
 				return;
 			}
