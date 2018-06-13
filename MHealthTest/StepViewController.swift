@@ -29,6 +29,7 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
         var stepIndex : Int
         var cellIndex : Int
         var cellDone = false
+        var groupNum : Int
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -84,14 +85,16 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
         var steps = stage!.steps
 
         var prevDuty = [DataManager.Duties.None]
+        var groupNum = 0
 
         for i in 0..<stage!.steps.count {
             print("Row I: \(i)")
             if !checkLists(first: steps[i].people, second: prevDuty) {
                 prevDuty = steps[i].people
-                cellInfo.append(CellDataType(type : .Stage, stepIndex : i, cellIndex : cellInfo.count, cellDone: false))
+                groupNum += 1
+                cellInfo.append(CellDataType(type : .Stage, stepIndex : i, cellIndex : cellInfo.count, cellDone: false, groupNum : groupNum))
             }
-            cellInfo.append(CellDataType(type : .Step, stepIndex : i, cellIndex : cellInfo.count, cellDone: false))
+            cellInfo.append(CellDataType(type : .Step, stepIndex : i, cellIndex : cellInfo.count, cellDone: false, groupNum : groupNum))
         }
     }
 //Yup
@@ -186,17 +189,45 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selecred")
        
-        var index = indexPath.row
+        var index = indexPath.row - 1
         
         
-        if (cellInfo[indexPath.row].type == .Step) {
+        if (cellInfo[index].type == .Step) {
             
 //            cellInfo.remove(at: index)
 
             
             if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? StepViewCell {
                 cell.stepName.text = ""
+                cellInfo[index].cellDone = true
             }
+            
+            //Part where I check to see if all duties of one discipline are done before removing the whole section
+            var shouldRemove = true
+            var i = 0
+            for data in cellInfo {
+                if data.groupNum == cellInfo[index].groupNum {
+                    if cellInfo[index].type == .Step {
+                        shouldRemove = cellInfo[index].cellDone && shouldRemove
+                    }
+                }
+                i += 1
+            }
+            
+            //Part where I remove the whole section
+            print("Should remove \(shouldRemove)")
+            if shouldRemove {
+                i = 0
+                for _ in 0..<cellInfo.count {
+                    if cellInfo[i].groupNum == cellInfo[index].groupNum {
+                        cellInfo.remove(at: i)
+                        print("Removing")
+                        i -= 1
+                    }
+                    i += 1
+                }
+            }
+            
             
             
 //            tableView.reloadData()
