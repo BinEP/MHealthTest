@@ -14,7 +14,7 @@ class StepViewCell: UITableViewCell {
     
     func setName(newName : String) {
         stepName.text = newName
-        print("Updated text name : \(String(describing: stepName.text))")
+//        print("Updated text name : \(String(describing: stepName.text))")
     }
     
     override func awakeFromNib() {

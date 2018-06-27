@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		232318BF20E17BB300579ABD /* FinishSurgeryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232318BE20E17BB300579ABD /* FinishSurgeryViewController.swift */; };
 		232C4B6620BE469D00E8A537 /* SurgeryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C4B6520BE469D00E8A537 /* SurgeryTableViewController.swift */; };
 		232C4B6820BE496100E8A537 /* SurgeryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232C4B6720BE496100E8A537 /* SurgeryTableViewCell.swift */; };
 		2332E5E220AE0BA6005B78C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332E5E120AE0BA6005B78C7 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		232318BE20E17BB300579ABD /* FinishSurgeryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSurgeryViewController.swift; sourceTree = "<group>"; };
 		232C4B6520BE469D00E8A537 /* SurgeryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryTableViewController.swift; sourceTree = "<group>"; };
 		232C4B6720BE496100E8A537 /* SurgeryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurgeryTableViewCell.swift; sourceTree = "<group>"; };
 		2332E5DE20AE0BA6005B78C7 /* MHealthTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHealthTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,7 @@
 				23FD11BB20B354540096EF2A /* StageNameViewCell.swift */,
 				23FD119120B3356D0096EF2A /* DataManager.swift */,
 				2332E5E920AE0BA6005B78C7 /* Main.storyboard */,
+				232318BE20E17BB300579ABD /* FinishSurgeryViewController.swift */,
 				232C4B6720BE496100E8A537 /* SurgeryTableViewCell.swift */,
 				232C4B6520BE469D00E8A537 /* SurgeryTableViewController.swift */,
 				2332E5EC20AE0BA7005B78C7 /* Assets.xcassets */,
@@ -160,6 +163,7 @@
 				2332E5E420AE0BA6005B78C7 /* RootViewController.swift in Sources */,
 				232C4B6620BE469D00E8A537 /* SurgeryTableViewController.swift in Sources */,
 				23FD118E20B32B6D0096EF2A /* StepViewController.swift in Sources */,
+				232318BF20E17BB300579ABD /* FinishSurgeryViewController.swift in Sources */,
 				2332E5E220AE0BA6005B78C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

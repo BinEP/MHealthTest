@@ -5,6 +5,10 @@
 //  Created by Brady Stoffel on 5/17/18.
 //  Copyright © 2018 Brady Stoffel. All rights reserved.
 //
+//
+//PDF if I want to use it
+//https://github.com/sgr-ksmt/PDFGenerator
+//
 
 import UIKit
 
@@ -12,6 +16,7 @@ class RootViewController: UIPageViewController {
 
 
     let stepViewControllerName = "StepViewController"
+    let finishSurgeryViewControllerName = "FinishSurgeryViewController"
     var surgeryIndex = 1
     
 //    private(set) lazy var orderedViewControllers: [UIViewController] = {
@@ -40,13 +45,7 @@ class RootViewController: UIPageViewController {
             for i in 0..<num {
                 views.append(self.newViewController(index: i))
             }
-//            return [self.newViewController(index: 0),
-//                    self.newViewController(index: 1),
-//                    self.newViewController(index: 2),
-//                    self.newViewController(index: 3),
-//                    self.newViewController(index: 4),
-//                    self.newViewController(index: 5),
-//                    self.newViewController(index: 6)]
+            views.append(finishSurgeryView())
             return views
         }
         
@@ -61,6 +60,12 @@ class RootViewController: UIPageViewController {
         viewController.setIndex(surgeryNum: surgeryIndex, index: index)
         return viewController
         
+    }
+    
+    private func finishSurgeryView() -> UIViewController {
+        let viewController = UIStoryboard(name: "Main", bundle: nil) .
+            instantiateViewController(withIdentifier: finishSurgeryViewControllerName) as! FinishSurgeryViewController
+        return viewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,13 +118,9 @@ class RootViewController: UIPageViewController {
             for i in 0..<num {
                 views.append(self.newViewController(index: i))
             }
-            //            return [self.newViewController(index: 0),
-            //                    self.newViewController(index: 1),
-            //                    self.newViewController(index: 2),
-            //                    self.newViewController(index: 3),
-            //                    self.newViewController(index: 4),
-            //                    self.newViewController(index: 5),
-            //                    self.newViewController(index: 6)]
+            views.append(finishSurgeryView())
+
+           
             orderedViewControllers = views
             print("Set view controllers")
         } else {

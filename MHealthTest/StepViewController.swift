@@ -30,6 +30,7 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
         var cellIndex : Int
         var cellDone = false
         var groupNum : Int
+        var timeClicked : Date?
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -39,6 +40,8 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     var cellInfo : [CellDataType] = []
+    var permInfo : [CellDataType] = []
+
     var stage : DataManager.Stage?
     
 //    So the view controller know whcih stage it should get data for, could also pass data in here.
@@ -70,6 +73,7 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         view.backgroundColor = UIColorFromRGB(rgbValue: meGreen)
+        tableView.backgroundColor = UIColorFromRGB(rgbValue: meGreen)
         
         
         
@@ -92,10 +96,13 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
             if !checkLists(first: steps[i].people, second: prevDuty) {
                 prevDuty = steps[i].people
                 groupNum += 1
-                cellInfo.append(CellDataType(type : .Stage, stepIndex : i, cellIndex : cellInfo.count, cellDone: false, groupNum : groupNum))
+                cellInfo.append(CellDataType(type : .Stage, stepIndex : i, cellIndex : cellInfo.count, cellDone: false, groupNum : groupNum, timeClicked : nil))
             }
-            cellInfo.append(CellDataType(type : .Step, stepIndex : i, cellIndex : cellInfo.count, cellDone: false, groupNum : groupNum))
+            cellInfo.append(CellDataType(type : .Step, stepIndex : i, cellIndex : cellInfo.count, cellDone: false, groupNum : groupNum, timeClicked : nil))
         }
+        
+        permInfo = cellInfo.map({$0})
+        print(cellInfo.description)
     }
 //Yup
     @IBAction func resetButton(_ sender: UIButton) {
@@ -132,14 +139,16 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         print("num steps: \(stage!.steps.count)")
+//        return (cellInfo.filter {!$0.cellDone}).count
         return cellInfo.count
+
     }
     
 //    Makes a cell either a stage cell or a duty heading. Constructs from data stuff
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let type = cellInfo[indexPath.row].type
-        print("Setting cell Info")
+//        print("Setting cell Info")
 
         if (type == .Stage) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "stageCell", for: indexPath) as! StageNameViewCell
@@ -158,12 +167,16 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
             let cell = tableView.dequeueReusableCell(withIdentifier: "stepCell", for: indexPath) as! StepViewCell
 
             let dataIndex = cellInfo[indexPath.row].stepIndex
-            let description = stage!.steps[dataIndex].description
-            print("Duty description: \(description)")
-
-            cell.setName(newName: description)
+            if cellInfo[indexPath.row].cellDone {
+                cell.setName(newName: " ")
+            } else {
+                let description = stage!.steps[dataIndex].description
+                print("Duty description: \(description)")
+                cell.setName(newName: description)
+            }
+           
             cell.backgroundColor = (cellInfo[indexPath.row].cellDone) ? UIColorFromRGB(rgbValue: meGreen) : UIColorFromRGB(rgbValue: meRed)
-            cell.accessoryType = (cellInfo[indexPath.row].cellDone) ? .checkmark : .none
+//            cell.accessoryType = (cellInfo[indexPath.row].cellDone) ? .checkmark : .none
 
             
             return cell
@@ -172,8 +185,8 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
         
      
         // Configure the cell...
-     
-     }
+    
+    }
 //    Internet function
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
@@ -188,75 +201,82 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
 //    So that each row changes color and gets marked as completed
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Selecred")
-       
-        var index = indexPath.row - 1
         
         
+        
+        
+        
+//        cellInfo.remove(at: indexPath.row)
+   
+        let index = indexPath.row
+//        https://stackoverflow.com/questions/39513258/get-current-date-in-swift-3/39514533
+        permInfo[cellInfo[index].cellIndex].timeClicked = Date()
+
+
         if (cellInfo[index].type == .Step) {
-            
+
 //            cellInfo.remove(at: index)
 
-            
+
             if let cell = tableView.cellForRow(at: indexPath as IndexPath) as? StepViewCell {
                 cell.stepName.text = ""
                 cellInfo[index].cellDone = true
+                permInfo[cellInfo[index].cellIndex].cellDone = true
+                
             }
-            
+
             //Part where I check to see if all duties of one discipline are done before removing the whole section
             var shouldRemove = true
             var i = 0
             for data in cellInfo {
                 if data.groupNum == cellInfo[index].groupNum {
-                    if cellInfo[index].type == .Step {
-                        shouldRemove = cellInfo[index].cellDone && shouldRemove
+                    if cellInfo[i].type == .Step {
+                        shouldRemove = cellInfo[i].cellDone && shouldRemove
                     }
                 }
                 i += 1
             }
             
+          
             //Part where I remove the whole section
+//            print(cellInfo.description)
+
             print("Should remove \(shouldRemove)")
+            let refGroupNum = cellInfo[index].groupNum
+
             if shouldRemove {
                 i = 0
                 for _ in 0..<cellInfo.count {
-                    if cellInfo[i].groupNum == cellInfo[index].groupNum {
+                    
+                    if cellInfo[i].groupNum == refGroupNum {
+                        if cellInfo[i].type == .Stage {
+                            cellInfo[i].cellDone = true
+                            permInfo[cellInfo[i].cellIndex].cellDone = true
+                            permInfo[cellInfo[i].cellIndex].timeClicked = Date()
+                        }
                         cellInfo.remove(at: i)
                         print("Removing")
                         i -= 1
                     }
                     i += 1
                 }
-            }
-            
-            
-            
-//            tableView.reloadData()
+                print(permInfo.description)
 
-            
-//            for i in 0..<(cellInfo.count - 1) {
-//                if cellInfo[i].type == .Stage && cellInfo[i+1].type == .Stage {
-//                    cellInfo.remove(at: i)
-//                }
-//            }
-            
-//            if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-//
-//                if cell.accessoryType == .checkmark {
-//                    cell.accessoryType = .none
-//                    cellInfo[indexPath.row].cellDone = false
-//                    cell.backgroundColor = UIColorFromRGB(rgbValue: meRed)
-//
-//
-//                } else {
-//                    cell.accessoryType = .checkmark
-//                    cell.backgroundColor = UIColorFromRGB(rgbValue: meGreen)
-//
-//                    cellInfo[indexPath.row].cellDone = true
-//
-//                }
-//            }
+            }
+
+
+
+  
+        
+            tableView.reloadData()
+
+            }
         }
-    }
+    
+        
+        
+        
+        
     
     
     /*
@@ -303,8 +323,8 @@ class StepViewController: UIViewController, UITableViewDelegate, UITableViewData
      // Pass the selected object to the new view controller.
      }
      */
-}
 
+    }
 
 extension Array where Element: Comparable {
     func containsSameElements(as other: [Element]) -> Bool {
