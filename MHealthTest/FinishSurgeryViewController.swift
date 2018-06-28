@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import QuickLook
 
-class FinishSurgeryViewController: UIViewController {
+class FinishSurgeryViewController: UIViewController, QLPreviewControllerDataSource, QLPreviewControllerDelegate {
+    
+    
+    var previewURL : TemporaryFileURL?
+    let quickLookController = QLPreviewController()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        quickLookController.dataSource = self
+        quickLookController.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +34,7 @@ class FinishSurgeryViewController: UIViewController {
         let parent = self.parent as! RootViewController
         var viewControllers = parent.orderedViewControllers
         viewControllers.removeLast()
-        var stepControllers = viewControllers as! [StepViewController]
+        let stepControllers = viewControllers as! [StepViewController]
         
         var string = ""
         var i = 0
@@ -45,6 +53,11 @@ class FinishSurgeryViewController: UIViewController {
         
         print("\n\n\nCSV string thing\n\n\n")
         print(string)
+        
+        let fileURL = saveToFile(contents: string, surgeryName: parent.surgeryName)
+        
+        
+        presentQuickLook(fileURL: fileURL)
     }
     
     func formattedControllerString(permInfo : [StepViewController.CellDataType], stageInfo : DataManager.Stage) -> String {
@@ -79,6 +92,46 @@ class FinishSurgeryViewController: UIViewController {
         
         return string
     }
+    
+    func saveToFile(contents : String, surgeryName : String) -> TemporaryFileURL{
+        
+        print("Surgery Name: \(surgeryName)")
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH.mm.ss"
+        let fileName = formatter.string(from: Date()) + " " + surgeryName
+        
+//        let tempURL = TemporaryFileURL(extension: fileName)
+        let tempURL = TemporaryFileURL(name : fileName, extension: "csv")
+        print("URL: \(tempURL.contentURL)")
+
+        do{
+            try contents.write(to: tempURL.contentURL, atomically: true, encoding: String.Encoding.utf8 )
+        } catch{
+            print("error trying to find")
+            print (error)
+        }
+        
+        return tempURL
+    }
+    
+    func presentQuickLook(fileURL : TemporaryFileURL) {
+        
+        previewURL = fileURL
+        
+        if QLPreviewController.canPreview(previewURL!.contentURL as QLPreviewItem) {
+            print("Preview")
+            //Sets what to preview in the quick look controller
+            quickLookController.currentPreviewItemIndex = 0
+            print("Going to display")
+            //            navigationController?.pushViewController(quickLookController, animated: true)
+            //Fixes the  rendering of table so that it gets presented below the title bar of the quick look controller
+            UINavigationBar.appearance().isTranslucent = true
+            //Presents quick look
+            present(quickLookController, animated: true, completion: nil)
+        }
+        
+        
+    }
    
     
     
@@ -91,5 +144,62 @@ class FinishSurgeryViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: Quicklook Methods
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return previewURL!.contentURL as QLPreviewItem
+    }
+    
+    func previewControllerWillDismiss(_ controller: QLPreviewController) {
+        UINavigationBar.appearance().isTranslucent = false
+    }
+    
+    func previewControllerDidDismiss(_ controller: QLPreviewController) {
+//        racesTableView.deselectRow(at: racesTableView.indexPathForSelectedRow!, animated: true)
+        print("The Preview Controller has been dismissed.")
+        //        print("Before change back: \(UINavigationBar.appearance().translucent)")
+        //
+        //        UINavigationBar.appearance().translucent = false
+        //        print("Change back: \(UINavigationBar.appearance().translucent)")
+        previewURL = nil
+        
+        
+    }
 
+}
+
+
+public final class TemporaryFileURL: ManagedURL {
+    
+    public let contentURL: URL
+    
+    public init(name : String, extension ext: String) {
+        contentURL = URL(fileURLWithPath: NSTemporaryDirectory())
+            .appendingPathComponent(name)
+            .appendingPathExtension(ext)
+    }
+    
+    deinit {
+        DispatchQueue.global(qos: .utility).async { [contentURL = self.contentURL] in
+            try? FileManager.default.removeItem(at: contentURL)
+            print("Deleted")
+        }
+    }
+}
+
+public protocol ManagedURL {
+    var contentURL: URL { get }
+    func keepAlive()
+}
+
+public extension ManagedURL {
+    public func keepAlive() { }
+}
+
+extension URL: ManagedURL {
+    public var contentURL: URL { return self }
 }

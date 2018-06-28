@@ -15,6 +15,7 @@
 		2332E5EB20AE0BA6005B78C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2332E5E920AE0BA6005B78C7 /* Main.storyboard */; };
 		2332E5ED20AE0BA7005B78C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2332E5EC20AE0BA7005B78C7 /* Assets.xcassets */; };
 		2332E5F020AE0BA7005B78C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2332E5EE20AE0BA7005B78C7 /* LaunchScreen.storyboard */; };
+		236D0F2120E5538700FEB331 /* BSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236D0F2020E5538700FEB331 /* BSFileManager.swift */; };
 		23FD118E20B32B6D0096EF2A /* StepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD118D20B32B6D0096EF2A /* StepViewController.swift */; };
 		23FD119220B3356D0096EF2A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD119120B3356D0096EF2A /* DataManager.swift */; };
 		23FD11B820B353330096EF2A /* StepViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD11B720B353330096EF2A /* StepViewCell.swift */; };
@@ -32,6 +33,7 @@
 		2332E5EC20AE0BA7005B78C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2332E5EF20AE0BA7005B78C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2332E5F120AE0BA7005B78C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		236D0F2020E5538700FEB331 /* BSFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSFileManager.swift; sourceTree = "<group>"; };
 		23FD118D20B32B6D0096EF2A /* StepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewController.swift; sourceTree = "<group>"; };
 		23FD119120B3356D0096EF2A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		23FD11B720B353330096EF2A /* StepViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepViewCell.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				23FD119120B3356D0096EF2A /* DataManager.swift */,
 				2332E5E920AE0BA6005B78C7 /* Main.storyboard */,
 				232318BE20E17BB300579ABD /* FinishSurgeryViewController.swift */,
+				236D0F2020E5538700FEB331 /* BSFileManager.swift */,
 				232C4B6720BE496100E8A537 /* SurgeryTableViewCell.swift */,
 				232C4B6520BE469D00E8A537 /* SurgeryTableViewController.swift */,
 				2332E5EC20AE0BA7005B78C7 /* Assets.xcassets */,
@@ -164,6 +167,7 @@
 				232C4B6620BE469D00E8A537 /* SurgeryTableViewController.swift in Sources */,
 				23FD118E20B32B6D0096EF2A /* StepViewController.swift in Sources */,
 				232318BF20E17BB300579ABD /* FinishSurgeryViewController.swift in Sources */,
+				236D0F2120E5538700FEB331 /* BSFileManager.swift in Sources */,
 				2332E5E220AE0BA6005B78C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

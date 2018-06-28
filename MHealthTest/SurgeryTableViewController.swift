@@ -56,6 +56,7 @@ class SurgeryTableViewController: UITableViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "RootViewController") as! RootViewController
         newViewController.surgeryIndex = surgery
+        newViewController.surgeryName = surgeryNames[indexPath.row]
         self.navigationController?.pushViewController(newViewController, animated: true)
 //        self.present(newViewController, animated: true, completion: nil)
     }

@@ -18,6 +18,7 @@ class RootViewController: UIPageViewController {
     let stepViewControllerName = "StepViewController"
     let finishSurgeryViewControllerName = "FinishSurgeryViewController"
     var surgeryIndex = 1
+    var surgeryName = ""
     
 //    private(set) lazy var orderedViewControllers: [UIViewController] = {
 //        return [self.newViewController(storyboardName: "Stage1", index: 0),
