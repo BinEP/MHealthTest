@@ -9,19 +9,30 @@
 import UIKit
 import QuickLook
 
-class FinishSurgeryViewController: UIViewController, QLPreviewControllerDataSource, QLPreviewControllerDelegate {
+class FinishSurgeryViewController: UIViewController, QLPreviewControllerDataSource, QLPreviewControllerDelegate, UITableViewDataSource, UITableViewDelegate {
     
     
     var previewURL : TemporaryFileURL?
     let quickLookController = QLPreviewController()
 
-
+    @IBOutlet weak var tableView: UITableView!
+    
+    var csvString : String?
+    var csvArray : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         quickLookController.dataSource = self
         quickLookController.delegate = self
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.estimatedRowHeight = 25.0 //you can provide any
+        tableView.rowHeight = UITableViewAutomaticDimension
+        setupString()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,8 +40,7 @@ class FinishSurgeryViewController: UIViewController, QLPreviewControllerDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func testThings(_ sender: Any) {
-        
+    func setupString() {
         let parent = self.parent as! RootViewController
         var viewControllers = parent.orderedViewControllers
         viewControllers.removeLast()
@@ -38,8 +48,10 @@ class FinishSurgeryViewController: UIViewController, QLPreviewControllerDataSour
         
         var string = ""
         var i = 0
+        
+        string += "Surgery:" + parent.surgeryName + "\n"
         for controller in stepControllers {
-//            print("Controller: \(i)")
+            //            print("Controller: \(i)")
             print(controller.permInfo.description)
             //Ok, so I have to make a thing to have all the info
             if let stage = controller.stage {
@@ -54,10 +66,27 @@ class FinishSurgeryViewController: UIViewController, QLPreviewControllerDataSour
         print("\n\n\nCSV string thing\n\n\n")
         print(string)
         
-        let fileURL = saveToFile(contents: string, surgeryName: parent.surgeryName)
+//        \\s*,\\s*
         
+        let fixString = string.replacingOccurrences(of: ",", with: ", ")
+            .replacingOccurrences(of: ", ", with: ", ")
+
+        csvString = fixString
+        csvArray = csvString!.components(separatedBy: "\n")
         
-        presentQuickLook(fileURL: fileURL)
+        while csvArray.last == "" {
+            csvArray.removeLast()
+        }
+    }
+    
+    @IBAction func testThings(_ sender: Any) {
+        
+        if let string = csvString {
+            let fileURL = saveToFile(contents: string, surgeryName: (self.parent as! RootViewController).surgeryName)
+            presentQuickLook(fileURL: fileURL)
+        }
+        
+       
     }
     
     func formattedControllerString(permInfo : [StepViewController.CellDataType], stageInfo : DataManager.Stage) -> String {
@@ -168,6 +197,37 @@ class FinishSurgeryViewController: UIViewController, QLPreviewControllerDataSour
         previewURL = nil
         
         
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        
+        return 1
+    }
+    
+    //    CellInfo length is size of table
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return csvArray.count
+    }
+    
+    //    Makes a cell either a stage cell or a duty heading. Constructs from data stuff
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath)
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.numberOfLines = 2
+        
+        cell.textLabel?.text = csvArray[indexPath.row]
+        return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
 }

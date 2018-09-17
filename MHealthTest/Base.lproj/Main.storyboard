@@ -62,22 +62,7 @@
                             <outlet property="delegate" destination="d0v-ra-gJJ" id="2Ld-U9-iDz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qXX-1D-D44">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="M1p-ee-P0N">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UjO-AJ-GeU">
-                                <rect key="frame" x="20" y="7" width="247" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pineapple doesn't go on Pizza"/>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="rHX-O0-gPf">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rke-UM-g26">
-                                <rect key="frame" x="845" y="7" width="247" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Made By Brady"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="qXX-1D-D44"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCY-Y3-JiG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,18 +84,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dress up this screen a bit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUs-as-pgP">
-                                <rect key="frame" x="37" y="20" width="1038" height="333"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfp-pE-yrs">
-                                <rect key="frame" x="37" y="361" width="1038" height="453"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zBf-Z9-gJG">
+                                <rect key="frame" x="20" y="20" width="1072" height="757"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="basicCell" rowHeight="25" id="voa-cI-mft">
+                                        <rect key="frame" x="0.0" y="28" width="1072" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="voa-cI-mft" id="qsf-06-ey3">
+                                            <rect key="frame" x="0.0" y="0.0" width="1072" height="24.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.83674913644790649" green="0.99598020315170288" blue="0.9960823655128479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfp-pE-yrs">
+                                <rect key="frame" x="20" y="785" width="1072" height="49"/>
                                 <color key="backgroundColor" red="0.83732944104367546" green="0.99667896456826244" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Sdg-MA-g30"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Export to File"/>
                                 <connections>
                                     <action selector="testThings:" destination="R1c-TN-wxT" eventType="touchUpInside" id="obV-d3-nd4"/>
@@ -118,8 +113,21 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jfp-pE-yrs" firstAttribute="trailing" secondItem="3ar-om-gd6" secondAttribute="trailingMargin" id="KUr-PF-7qJ"/>
+                            <constraint firstItem="zBf-Z9-gJG" firstAttribute="top" secondItem="mLY-GD-JNY" secondAttribute="top" id="b3q-Il-u1e"/>
+                            <constraint firstItem="Jfp-pE-yrs" firstAttribute="leading" secondItem="3ar-om-gd6" secondAttribute="leadingMargin" id="dFR-VA-o0c"/>
+                            <constraint firstItem="Jfp-pE-yrs" firstAttribute="trailing" secondItem="zBf-Z9-gJG" secondAttribute="trailing" id="h5e-dO-jy5"/>
+                            <constraint firstItem="Jfp-pE-yrs" firstAttribute="top" secondItem="zBf-Z9-gJG" secondAttribute="bottom" constant="8" id="jUd-Sl-0rv"/>
+                            <constraint firstItem="Jfp-pE-yrs" firstAttribute="top" secondItem="zBf-Z9-gJG" secondAttribute="bottom" constant="8" id="obq-8B-P5A"/>
+                            <constraint firstItem="Jfp-pE-yrs" firstAttribute="leading" secondItem="zBf-Z9-gJG" secondAttribute="leading" id="vmn-kj-MXR"/>
+                            <constraint firstAttribute="bottom" secondItem="Jfp-pE-yrs" secondAttribute="bottom" id="yq2-cd-6bf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mLY-GD-JNY"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="zBf-Z9-gJG" id="RCu-Fv-Oca"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqc-QN-8qT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +145,7 @@
                                 <rect key="frame" x="20" y="101" width="1072" height="733"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stepCell" rowHeight="120" id="xXi-Jf-7mK" customClass="StepViewCell" customModule="MHealthTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stepCell" rowHeight="120" id="xXi-Jf-7mK" customClass="StepViewCell" customModule="MHealthTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="1072" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xXi-Jf-7mK" id="Eb4-rw-4Bo">
@@ -166,7 +174,7 @@
                                             <outlet property="stepName" destination="nJK-mz-ywJ" id="tai-VP-zmr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stageCell" id="C1s-Za-2bi" customClass="StageNameViewCell" customModule="MHealthTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stageCell" id="C1s-Za-2bi" customClass="StageNameViewCell" customModule="MHealthTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="148" width="1072" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C1s-Za-2bi" id="0wN-I3-GE9">
